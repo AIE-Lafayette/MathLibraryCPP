@@ -11,8 +11,8 @@ Vector2::Vector2()
 
 Vector2::Vector2(float x, float y)
 {
-    x = x;
-    y = y;
+    this->x = x;
+    this->y = y;
 }
 
 float Vector2::getMagnitude()

@@ -13,9 +13,9 @@ Vector3::Vector3()
 
 Vector3::Vector3(float x, float y, float z)
 {
-    x = x;
-    y = y;
-    z = z;
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
 
 float Vector3::getMagnitude()
