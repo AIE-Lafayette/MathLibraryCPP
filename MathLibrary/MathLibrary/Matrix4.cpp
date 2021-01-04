@@ -1,10 +1,10 @@
 #include "pch.h"
-#include "Matrix4.h"
 #include <cmath>
 #include "Vector3.h"
 #include "Vector4.h"
+#include "Matrix4.h"
 
-Matrix4::Matrix4()
+MathLibrary::Matrix4::Matrix4()
 {
     m11 = 1; m12 = 0; m13 = 0; m14 = 0;
     m21 = 0; m22 = 1; m23 = 0; m24 = 0;
@@ -12,7 +12,7 @@ Matrix4::Matrix4()
     m41 = 0; m42 = 0; m43 = 0; m44 = 1;
 }
 
-Matrix4::Matrix4(float m11, float m12, float m13, float m14,
+MathLibrary::Matrix4::Matrix4(float m11, float m12, float m13, float m14,
                  float m21, float m22, float m23, float m24,
                  float m31, float m32, float m33, float m34,
                  float m41, float m42, float m43, float m44)
@@ -23,7 +23,7 @@ Matrix4::Matrix4(float m11, float m12, float m13, float m14,
     this->m41 = m41; this->m42 = m42; this->m43 = m43; this->m44 = m44;
 }
 
-Matrix4 Matrix4::operator+(Matrix4 rhs)
+MathLibrary::Matrix4 MathLibrary::Matrix4::operator+(Matrix4 rhs)
 {
     return Matrix4
     (
@@ -34,7 +34,7 @@ Matrix4 Matrix4::operator+(Matrix4 rhs)
     );
 }
 
-Matrix4 Matrix4::operator-(Matrix4 rhs)
+MathLibrary::Matrix4 MathLibrary::Matrix4::operator-(Matrix4 rhs)
 {
     return Matrix4
     (
@@ -45,7 +45,7 @@ Matrix4 Matrix4::operator-(Matrix4 rhs)
     );
 }
 
-Matrix4 Matrix4::operator*(Matrix4 rhs)
+MathLibrary::Matrix4 MathLibrary::Matrix4::operator*(Matrix4 rhs)
 {
     return Matrix4
     (
@@ -72,7 +72,7 @@ Matrix4 Matrix4::operator*(Matrix4 rhs)
     );
 }
 
-Vector4 Matrix4::operator*(Vector4 rhs)
+MathLibrary::Vector4 MathLibrary::Matrix4::operator*(Vector4 rhs)
 {
     return Vector4
     (
@@ -87,7 +87,7 @@ Vector4 Matrix4::operator*(Vector4 rhs)
     );
 }
 
-bool Matrix4::operator==(Matrix4 rhs)
+bool MathLibrary::Matrix4::operator==(Matrix4 rhs)
 {
     return m11 == rhs.m11 && m12 == rhs.m12 && m13 == rhs.m13 && m14 == rhs.m14 &&
         m21 == rhs.m21 && m22 == rhs.m22 && m23 == rhs.m23 && m24 == rhs.m24 &&
@@ -95,7 +95,7 @@ bool Matrix4::operator==(Matrix4 rhs)
         m41 == rhs.m41 && m42 == rhs.m42 && m43 == rhs.m43 && m44 == rhs.m44;
 }
 
-Matrix4 Matrix4::createRotationZ(float radians)
+MathLibrary::Matrix4 MathLibrary::Matrix4::createRotationZ(float radians)
 {
     return Matrix4
     (
@@ -106,7 +106,7 @@ Matrix4 Matrix4::createRotationZ(float radians)
     );
 }
 
-Matrix4 Matrix4::createRotationY(float radians)
+MathLibrary::Matrix4 MathLibrary::Matrix4::createRotationY(float radians)
 {
     return Matrix4
     (
@@ -117,7 +117,7 @@ Matrix4 Matrix4::createRotationY(float radians)
     );
 }
 
-Matrix4 Matrix4::createRotationX(float radians)
+MathLibrary::Matrix4 MathLibrary::Matrix4::createRotationX(float radians)
 {
     return Matrix4
     (
@@ -128,7 +128,7 @@ Matrix4 Matrix4::createRotationX(float radians)
     );
 }
 
-Matrix4 Matrix4::createTranslation(Vector3 position)
+MathLibrary::Matrix4 MathLibrary::Matrix4::createTranslation(Vector3 position)
 {
     return Matrix4
     (
@@ -139,7 +139,7 @@ Matrix4 Matrix4::createTranslation(Vector3 position)
     );
 }
 
-Matrix4 Matrix4::createScale(Vector3 scale)
+MathLibrary::Matrix4 MathLibrary::Matrix4::createScale(Vector3 scale)
 {
     return Matrix4
     (

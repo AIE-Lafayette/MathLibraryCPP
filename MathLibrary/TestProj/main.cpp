@@ -7,5 +7,6 @@
 int main()
 {
 	Matrix3 test = Matrix3();
+	Vector2 tst;
 	return 0;
 }

@@ -2,30 +2,29 @@
 #include "Vector2.h"
 #include <cmath>
 
-
-Vector2::Vector2()
+MathLibrary::Vector2::Vector2()
 {
     x = 0;
     y = 0;
 }
 
-Vector2::Vector2(float x, float y)
+MathLibrary::Vector2::Vector2(float x, float y)
 {
     this->x = x;
     this->y = y;
 }
 
-float Vector2::getMagnitude()
+float MathLibrary::Vector2::getMagnitude()
 {
     return sqrt(x * x + y * y);
 }
 
-Vector2 Vector2::getNormalized()
+MathLibrary::Vector2 MathLibrary::Vector2::getNormalized()
 {
     return normalize(*this);
 }
 
-Vector2 Vector2::normalize(Vector2 vector)
+MathLibrary::Vector2 MathLibrary::Vector2::normalize(Vector2 vector)
 {
     if (vector.getMagnitude() == 0)
         return Vector2();
@@ -33,12 +32,12 @@ Vector2 Vector2::normalize(Vector2 vector)
     return vector / vector.getMagnitude();
 }
 
-float Vector2::dotProduct(Vector2 lhs, Vector2 rhs)
+float MathLibrary::Vector2::dotProduct(Vector2 lhs, Vector2 rhs)
 {
     return (lhs.x * rhs.x) + (lhs.y * rhs.y);
 }
 
-float Vector2::findAngle(Vector2 lhs, Vector2 rhs)
+float MathLibrary::Vector2::findAngle(Vector2 lhs, Vector2 rhs)
 {
     lhs = normalize(lhs);
     rhs = normalize(rhs);
@@ -64,32 +63,32 @@ float Vector2::findAngle(Vector2 lhs, Vector2 rhs)
     return angle;
 }
 
-Vector2 Vector2::operator +(Vector2 rhs)
+MathLibrary::Vector2 MathLibrary::Vector2::operator +(Vector2 rhs)
 {
     return Vector2(x + rhs.x, y + rhs.y);
 }
 
-Vector2 Vector2::operator -(Vector2 rhs)
+MathLibrary::Vector2 MathLibrary::Vector2::operator -(Vector2 rhs)
 {
     return Vector2(x - rhs.x, y - rhs.y);
 }
 
-Vector2 Vector2::operator *(float scalar)
+MathLibrary::Vector2 MathLibrary::Vector2::operator *(float scalar)
 {
     return Vector2(x * scalar, y * scalar);
 }
 
-Vector2 operator *(float scalar, Vector2 rhs)
+MathLibrary::Vector2 operator *(float scalar, MathLibrary::Vector2 rhs)
 {
-    return Vector2(scalar * rhs.x, scalar * rhs.y);
+    return MathLibrary::Vector2(scalar * rhs.x, scalar * rhs.y);
 }
 
-Vector2 Vector2::operator / (float scalar)
+MathLibrary::Vector2 MathLibrary::Vector2::operator / (float scalar)
 {
     return Vector2(x / scalar, y / scalar);
 }
 
-bool Vector2::operator==(Vector2 rhs)
+bool MathLibrary::Vector2::operator==(Vector2 rhs)
 {
     return x == rhs.x && y == rhs.y;
 }
