@@ -19,7 +19,7 @@ MathLibrary::Vector3::Vector3(float x, float y, float z)
 
 float MathLibrary::Vector3::getMagnitude()
 {
-    return sqrt(x * x + y * y + +z * z);
+    return sqrt(x * x + y * y + z * z);
 }
 
 MathLibrary::Vector3 MathLibrary::Vector3::getNormalized()
@@ -33,6 +33,16 @@ MathLibrary::Vector3 MathLibrary::Vector3::normalize(Vector3 vector)
         return Vector3();
 
     return vector / vector.getMagnitude();
+}
+
+MathLibrary::Vector3 MathLibrary::Vector3::normalize()
+{
+    if (getMagnitude() == 0)
+        return Vector3();
+
+    *this = *this / getMagnitude();
+
+    return *this;
 }
 
 float MathLibrary::Vector3::dotProduct(Vector3 lhs, Vector3 rhs)

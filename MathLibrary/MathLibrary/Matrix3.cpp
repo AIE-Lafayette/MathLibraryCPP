@@ -6,25 +6,25 @@
 
 MathLibrary::Matrix3::Matrix3()
 {
-    m11 = 1; m12 = 0; m13 = 0;
-    m21 = 0; m22 = 1; m23 = 0;
-    m31 = 0; m32 = 0; m33 = 1;
+    m00 = 1; m01 = 0; m02 = 0;
+    m10 = 0; m11 = 1; m12 = 0;
+    m20 = 0; m21 = 0; m22 = 1;
 }
 
 MathLibrary::Matrix3::Matrix3(float m11, float m12, float m13, float m21, float m22, float m23, float m31, float m32, float m33)
 {
-    this->m11 = m11; this->m12 = m12; this->m13 = m13;
-    this->m21 = m21; this->m22 = m22; this->m23 = m23;
-    this->m31 = m31; this->m32 = m32; this->m33 = m33;
+    this->m00 = m11; this->m01 = m12; this->m02 = m13;
+    this->m10 = m21; this->m11 = m22; this->m12 = m23;
+    this->m20 = m31; this->m21 = m32; this->m22 = m33;
 }
 
 MathLibrary::Matrix3 MathLibrary::Matrix3::operator+(Matrix3 rhs)
 {
     return Matrix3
     (
-        this->m11 + rhs.m11, this->m12 + rhs.m12, this->m13 + rhs.m13,
-        this->m21 + rhs.m21, this->m22 + rhs.m22, this->m23 + rhs.m23,
-        this->m31 + rhs.m31, this->m32 + rhs.m32, this->m33 + rhs.m33
+        this->m00 + rhs.m00, this->m01 + rhs.m01, this->m02 + rhs.m02,
+        this->m10 + rhs.m10, this->m11 + rhs.m11, this->m12 + rhs.m12,
+        this->m20 + rhs.m20, this->m21 + rhs.m21, this->m22 + rhs.m22
     );
 }
 
@@ -32,9 +32,9 @@ MathLibrary::Matrix3 MathLibrary::Matrix3::operator-(Matrix3 rhs)
 {
     return Matrix3
     (
-        this->m11 - rhs.m11, this->m12 - rhs.m12, this->m13 - rhs.m13,
-        this->m21 - rhs.m21, this->m22 - rhs.m22, this->m23 - rhs.m23,
-        this->m31 - rhs.m31, this->m32 - rhs.m32, this->m33 - rhs.m33
+        this->m00 - rhs.m00, this->m01 - rhs.m01, this->m02 - rhs.m02,
+        this->m10 - rhs.m10, this->m11 - rhs.m11, this->m12 - rhs.m12,
+        this->m20 - rhs.m20, this->m21 - rhs.m21, this->m22 - rhs.m22
     );
 }
 
@@ -43,17 +43,17 @@ MathLibrary::Matrix3 MathLibrary::Matrix3::operator*(Matrix3 rhs)
     return Matrix3
     (
         //Row1
-        this->m11 * rhs.m11 + this->m12 * rhs.m21 + this->m13 * rhs.m31,
-        this->m11 * rhs.m12 + this->m12 * rhs.m22 + this->m13 * rhs.m32,
-        this->m11 * rhs.m13 + this->m12 * rhs.m23 + this->m13 * rhs.m33,
+        this->m00 * rhs.m00 + this->m01 * rhs.m10 + this->m02 * rhs.m20,
+        this->m00 * rhs.m01 + this->m01 * rhs.m11 + this->m02 * rhs.m21,
+        this->m00 * rhs.m02 + this->m01 * rhs.m12 + this->m02 * rhs.m22,
         //Row 2
-        this->m21 * rhs.m11 + this->m22 * rhs.m21 + this->m23 * rhs.m31,
-        this->m21 * rhs.m12 + this->m22 * rhs.m22 + this->m23 * rhs.m32,
-        this->m21 * rhs.m13 + this->m22 * rhs.m23 + this->m23 * rhs.m33,
+        this->m10 * rhs.m00 + this->m11 * rhs.m10 + this->m12 * rhs.m20,
+        this->m10 * rhs.m01 + this->m11 * rhs.m11 + this->m12 * rhs.m21,
+        this->m10 * rhs.m02 + this->m11 * rhs.m12 + this->m12 * rhs.m22,
         //Row 3
-        this->m31 * rhs.m11 + this->m32 * rhs.m21 + this->m33 * rhs.m31,
-        this->m31 * rhs.m12 + this->m32 * rhs.m22 + this->m33 * rhs.m32,
-        this->m31 * rhs.m13 + this->m32 * rhs.m23 + this->m33 * rhs.m33
+        this->m20 * rhs.m00 + this->m21 * rhs.m10 + this->m22 * rhs.m20,
+        this->m20 * rhs.m01 + this->m21 * rhs.m11 + this->m22 * rhs.m21,
+        this->m20 * rhs.m02 + this->m21 * rhs.m12 + this->m22 * rhs.m22
     );
 }
 
@@ -62,19 +62,19 @@ MathLibrary::Vector3 MathLibrary::Matrix3::operator*(Vector3 rhs)
     return Vector3
     (
         //Row1
-        (this->m11 * rhs.x) + (this->m12 * rhs.y) + (this->m13 * rhs.z),
+        (this->m00 * rhs.x) + (this->m01 * rhs.y) + (this->m02 * rhs.z),
         //Row 2
-        (this->m21 * rhs.x) + (this->m22 * rhs.y) + (this->m23 * rhs.z),
+        (this->m10 * rhs.x) + (this->m11 * rhs.y) + (this->m12 * rhs.z),
         //Row 3
-        (this->m31 * rhs.x) + (this->m32 * rhs.y) + (this->m33 * rhs.z)
+        (this->m20 * rhs.x) + (this->m21 * rhs.y) + (this->m22 * rhs.z)
     );
 }
 
 bool MathLibrary::Matrix3::operator ==(Matrix3 rhs)
 {
-    return m11 == rhs.m11 && m12 == rhs.m12 && m13 == rhs.m13 &&
-           m21 == rhs.m21 && m22 == rhs.m22 && m23 == rhs.m23 &&
-           m31 == rhs.m31 && m32 == rhs.m32 && m33 == rhs.m33;
+    return m00 == rhs.m00 && m01 == rhs.m01 && m02 == rhs.m02 &&
+           m10 == rhs.m10 && m11 == rhs.m11 && m12 == rhs.m12 &&
+           m20 == rhs.m20 && m21 == rhs.m21 && m22 == rhs.m22;
 }
 
 MathLibrary::Matrix3 MathLibrary::Matrix3::createRotation(float radians)

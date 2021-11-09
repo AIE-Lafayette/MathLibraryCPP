@@ -33,6 +33,14 @@ MathLibrary::Vector4 MathLibrary::Vector4::normalize(Vector4 vector)
     return vector / vector.getMagnitude();
 }
 
+MathLibrary::Vector4 MathLibrary::Vector4::normalize()
+{
+    if (getMagnitude() == 0)
+        return Vector4();
+
+    return *this = *this / getMagnitude();
+}
+
 float MathLibrary::Vector4::dotProduct(Vector4 lhs, Vector4 rhs)
 {
     return (lhs.x * rhs.x) + (lhs.y * rhs.y) + (lhs.z * rhs.z);
