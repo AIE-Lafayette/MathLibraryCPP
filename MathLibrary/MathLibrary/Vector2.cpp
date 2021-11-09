@@ -21,7 +21,7 @@ float MathLibrary::Vector2::getMagnitude()
 
 MathLibrary::Vector2 MathLibrary::Vector2::getNormalized()
 {
-    return normalizeVector(*this);
+    return normalize(*this);
 }
 
 MathLibrary::Vector2 MathLibrary::Vector2::normalize(Vector2 vector)
@@ -49,8 +49,8 @@ float MathLibrary::Vector2::dotProduct(Vector2 lhs, Vector2 rhs)
 
 float MathLibrary::Vector2::findAngle(Vector2 lhs, Vector2 rhs)
 {
-    lhs = normalizeVector(lhs);
-    rhs = normalizeVector(rhs);
+    lhs = normalize(lhs);
+    rhs = normalize(rhs);
 
     //Use the dotproduct to find the angle the actor needs to rotate
     float dotProd = dotProduct(lhs, rhs);
